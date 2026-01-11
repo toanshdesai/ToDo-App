@@ -6,14 +6,17 @@ __pycache__/
 .Python
 env/
 venv/
+.venv/
 ENV/
-build/
-dist/
 *.egg-info/
 .eggs/
 
-# PyInstaller
-*.spec
+# Build artifacts
+build/
+dist/
+*.app
+*.dmg
+*.zip
 
 # IDE
 .idea/
@@ -24,8 +27,6 @@ dist/
 
 # macOS
 .DS_Store
-*.iconset/
 
-# App specific
+# App specific - user data only
 tasks.json
-PACKAGING_COMPLETE.md

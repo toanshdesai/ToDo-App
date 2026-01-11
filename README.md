@@ -15,14 +15,22 @@ A clean, professional TODO application for macOS with priorities, due dates, sub
 
 ## Quick Start
 
-### For Users: Run the App
+### For Users: Install the App
 
-**Option 1: Download & Run (No Python needed)**
+**Option 1: DMG Installer (Recommended - No Python needed)**
+1. Download `TODO-Installer.dmg` from Releases
+2. Double-click the DMG file to mount it
+3. Drag `TODO.app` to the `Applications` folder
+4. Eject the DMG
+5. Launch TODO from Launchpad or Spotlight
+
+**Option 2: Direct Download (Alternative)**
 1. Download `TODO.app.zip` from Releases
 2. Extract the ZIP file
-3. Double-click `TODO.app` to run
+3. Right-click `TODO.app` and select "Open" (first time only)
+4. Double-click to run normally afterwards
 
-**Option 2: Build from Source (If you have Python)**
+**Option 3: Build from Source (If you have Python)**
 ```bash
 cd /path/to/ToDoApp
 chmod +x build.sh
@@ -70,8 +78,31 @@ pyinstaller TODO.spec
 
 ### Result
 - **Location**: `dist/TODO.app`
-- **Size**: ~30-40 MB (includes Python runtime)
-- **Share**: Zip and distribute to other macOS users
+- **Size**: ~26 MB (includes Python runtime)
+- **Share**: Create a DMG or ZIP to distribute
+
+## 📦 Create DMG Installer (For Distribution)
+
+After building the app, create a professional DMG installer:
+
+```bash
+# Make sure the app is built first
+./build.sh
+
+# Create DMG installer
+chmod +x create_dmg.sh
+./create_dmg.sh
+```
+
+### Result
+- **Location**: `dist/TODO-Installer.dmg`
+- **Size**: ~12 MB (compressed)
+- **Contains**:
+  - TODO.app
+  - Applications folder shortcut
+  - Drag-and-drop installation interface
+
+### Alternative: Create ZIP
 
 ```bash
 # Create a shareable ZIP
@@ -136,12 +167,21 @@ cp tasks.json.backup tasks.json
 
 ## Files
 
-- `desktop_app.py` - Main application
-- `dialogs.py` - Dialog windows (confirmation, info)
+### Source Code
+- `desktop_app.py` - Main application code
+- `dialogs.py` - Dialog windows (confirmation, info, warning)
 - `task_dialogs.py` - Task editing dialog
-- `tasks.json` - Your task data
-- `TODO.spec` - PyInstaller configuration
-- `build.sh` - Build script
+- `tasks.json` - Your task data (auto-created)
+
+### Build & Distribution
+- `build.sh` - Build script for creating .app bundle
+- `create_dmg.sh` - DMG installer creation script
+- `TODO.spec` - PyInstaller build configuration
+- `requirements.txt` - Python dependencies
+
+### Assets
+- `TODO.icns` - macOS app icon
+- `TODO.iconset/` - Icon source files (various sizes)
 
 ## Troubleshooting
 

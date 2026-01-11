@@ -715,6 +715,16 @@ def main():
     """Main entry point."""
     root = tk.Tk()
 
+    # Set window icon
+    try:
+        icon_path = Path(__file__).parent / "TODO.iconset" / "icon_256x256.png"
+        if icon_path.exists():
+            icon = tk.PhotoImage(file=str(icon_path))
+            root.iconphoto(True, icon)
+    except Exception:
+        # If icon loading fails, continue without it
+        pass
+
     # macOS-specific: Force appearance mode to prevent color desaturation on focus
     if sys.platform == "darwin":
         try:
